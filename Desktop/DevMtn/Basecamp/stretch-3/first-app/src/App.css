@@ -1,0 +1,15 @@
+App {
+  display: inline-flex;
+}
+comp1 {
+  color: blue;
+  text-align: left;
+}
+comp2 {
+  color: red;
+  text-align: center;
+}
+comp3 {
+  color: yellow;
+  text-align: right;
+}
