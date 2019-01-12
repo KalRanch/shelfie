@@ -1,18 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const massive = require('massive');
 require('dotenv').config()
 
 const app = express();
 massive( process.env.CONNECTION_STRING ).then( dbInstance => {
-    app.set('db', dbInstance);
+  app.set('db', dbInstance);
   
-     dbInstance.new_products()
-       .then( products => console.log( products ) )
-       .catch( err => console.log( err ) );
+    //  dbInstance.new_products()
+    //    .then( products => console.log( products ) )
+    //    .catch( err => console.log( err ) );
+
+    // dbInstance.get_products()
+    // .then( products => console.log ( products ) )
+    // .catch( err => console.log( err ) );
   });
 app.use( bodyParser.json() );
+app.use( cors() );
 
-const port = 4000
-app.listen( port, () => { console.log(`Server listening on port ${port}`); } );
+const port = process.env.PORT || 3000
+app.listen(port, () => { console.log(`Server listening on port ${port}`) } );
